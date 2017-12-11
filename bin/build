@@ -2,5 +2,6 @@
 set -ex
 cd "$(dirname "$0")/../src"
 
+sh -c "cd docker && docker build --tag '${IMAGE:-mauchede/jenkins-runner}:${TAG:-docker}' ."
 sh -c "cd php && docker build --tag '${IMAGE:-mauchede/jenkins-runner}:${TAG:-php}' ."
 sh -c "cd scm && docker build --tag '${IMAGE:-mauchede/jenkins-runner}:${TAG:-scm}' ."
