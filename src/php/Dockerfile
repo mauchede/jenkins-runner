@@ -1,27 +1,29 @@
-FROM openjdk:jre-slim
+FROM openjdk:jre-alpine
 
 LABEL \
     maintainer="Morgan Auchede <morgan.auchede@gmail.com>"
 
 RUN set -ex \
 \
-    # Prepare system
-\
-    && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get update \
-\
     # Install packages
 \
-    && apt-get install --no-install-recommends --yes \
+    && apk add --no-cache --no-progress \
            ca-certificates \
            curl \
            git \
+           shadow \
            openssh-client \
-           php-cli \
-           php-curl \
-           php-json \
-           php-xml \
-           php-zip \
+           php7 \
+           php7-curl \
+           php7-dom \
+           php7-iconv \
+           php7-json \
+           php7-mbstring \
+           php7-openssl \
+           php7-phar \
+           php7-xml \
+           php7-zlib \
+           php7-zip \
 \
     # Install composer/composer
 \
@@ -36,10 +38,9 @@ RUN set -ex \
     # Create user "jenkins"
 \
     && groupadd --gid 1000 jenkins \
-    && useradd --comment Jenkins --create-home --gid 1000 --home-dir /home/jenkins --uid 1000 jenkins \
+    && useradd --comment Jenkins --create-home --gid 1000 --home-dir /home/jenkins --shell /bin/sh --uid 1000 jenkins \
 \
     # Clean
 \
-    && rm --force --recursive \
-           /tmp/* \
-           /var/lib/apt/lists/*
+    && rm -f -r \
+           /tmp/*
