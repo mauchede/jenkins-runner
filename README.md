@@ -16,3 +16,4 @@ __Note__: Use the script `bin/build` to test your modifications locally.
 
 * [image "mauchede/jenkins-runner"](https://hub.docker.com/r/mauchede/jenkins-runner/)
 * [jenkins](https://jenkins.io/)
+* [timonier/version-lister](https://github.com/timonier/version-lister)
