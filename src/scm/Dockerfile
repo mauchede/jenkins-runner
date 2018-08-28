@@ -3,16 +3,11 @@ FROM openjdk:jre-alpine
 LABEL \
     maintainer="Morgan Auchede <morgan.auchede@gmail.com>"
 
-RUN set -ex \
+RUN set -e -u -x \
 \
     # Install packages
 \
-    && apk add --no-cache --no-progress \
-           ca-certificates \
-           curl \
-           git \
-           shadow \
-           openssh-client \
+    && apk add --no-cache --no-progress bash ca-certificates curl jq git openssh-client shadow \
 \
     # Create user "jenkins"
 \
@@ -21,5 +16,4 @@ RUN set -ex \
 \
     # Clean
 \
-    && rm -f -r \
-           /tmp/*
+    && rm -f -r  /tmp/*

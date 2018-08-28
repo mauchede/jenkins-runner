@@ -12,8 +12,10 @@ Set of Docker images for Jenkins
 
 __Note__: Use the script `bin/build` to test your modifications locally.
 
+If you like / use this project, please let me known by adding a [★](https://help.github.com/articles/about-stars/) on the [GitHub repository](https://github.com/mauchede/jenkins-runner).
+
 ## Links
 
 * [image "mauchede/jenkins-runner"](https://hub.docker.com/r/mauchede/jenkins-runner/)
 * [jenkins](https://jenkins.io/)
-* [timonier/version-lister](https://github.com/timonier/version-lister)
+* [mauchede/version-lister](https://github.com/mauchede/version-lister)
