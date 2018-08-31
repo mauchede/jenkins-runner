@@ -13,7 +13,7 @@ RUN set -e -u -x \
     # Install docker-ce
 \
     && export $(curl --location "https://github.com/mauchede/version-lister/raw/generated/docker/docker-ce/latest" | xargs) \
-    && curl --location --output /tmp/docker.tgz "${DOCKER_CE_RELEASE}" \
+    && curl --location --output /tmp/docker.tgz "${DOCKER_CE_LINUX_RELEASE}" \
     && tar --directory /tmp --extract --file /tmp/docker.tgz \
     && mv /tmp/docker/docker* /usr/bin/ \
     && groupadd --gid 999 --non-unique docker \
