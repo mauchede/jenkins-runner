@@ -1,9 +1,0 @@
-#!/bin/sh
-set -e -u -x
-cd "$(dirname "$0")"/../src
-
-docker build --file docker/Dockerfile --tag "${IMAGE:-mauchede/jenkins-runner}":"${TAG:-docker}" docker
-
-docker build --file php/Dockerfile --tag "${IMAGE:-mauchede/jenkins-runner}":"${TAG:-php}" php
-
-docker build --file scm/Dockerfile --tag "${IMAGE:-mauchede/jenkins-runner}":"${TAG:-scm}" scm
