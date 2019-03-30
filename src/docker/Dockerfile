@@ -20,7 +20,17 @@ RUN set -e -u -x \
 \
    # Install docker-compose
 \
-    && pip install docker-compose \
+    && export $(curl --location "https://github.com/mauchede/version-lister/raw/generated/docker/compose/latest" | xargs) \
+    && curl --location --output /usr/local/bin/docker-compose "${COMPOSE_LINUX_RELEASE}" \
+    && chmod +x /usr/local/bin/docker-compose \
+\
+    # Install glibc
+\
+    && export $(curl --location "https://github.com/timonier/version-lister/raw/generated/sgerrand/alpine-pkg-glibc/latest" | xargs) \
+    && curl --location --output /etc/apk/keys/sgerrand.rsa.pub "${GLIBC_REPOSITORY_KEY}" \
+    && curl --location --output /tmp/glibc.apk "${GLIBC_PACKAGE}" \
+    && curl --location --output /tmp/glibc-bin.apk "${GLIBC_BIN_PACKAGE}" \
+    && apk add --no-cache --no-progress /tmp/glibc.apk /tmp/glibc-bin.apk \
 \
     # Create user "jenkins"
 \
