@@ -12,7 +12,7 @@ RUN set -e -u -x \
 \
     # Install docker-ce
 \
-    && export $(curl --location "https://github.com/mauchede/version-lister/raw/generated/docker/docker-ce/latest" | xargs) \
+    && export $(curl --location "https://gitlab.com/mauchede/version-lister/raw/generated/docker/docker-ce/latest" | xargs) \
     && curl --location --output /tmp/docker.tgz "${DOCKER_CE_LINUX_RELEASE}" \
     && tar --directory /tmp --extract --file /tmp/docker.tgz \
     && mv /tmp/docker/docker* /usr/bin/ \
@@ -20,13 +20,13 @@ RUN set -e -u -x \
 \
    # Install docker-compose
 \
-    && export $(curl --location "https://github.com/mauchede/version-lister/raw/generated/docker/compose/latest" | xargs) \
+    && export $(curl --location "https://gitlab.com/mauchede/version-lister/raw/generated/docker/compose/latest" | xargs) \
     && curl --location --output /usr/local/bin/docker-compose "${COMPOSE_LINUX_RELEASE}" \
     && chmod +x /usr/local/bin/docker-compose \
 \
     # Install glibc
 \
-    && export $(curl --location "https://github.com/timonier/version-lister/raw/generated/sgerrand/alpine-pkg-glibc/latest" | xargs) \
+    && export $(curl --location "https://gitlab.com/timonier/version-lister/raw/generated/sgerrand/alpine-pkg-glibc/latest" | xargs) \
     && curl --location --output /etc/apk/keys/sgerrand.rsa.pub "${GLIBC_REPOSITORY_KEY}" \
     && curl --location --output /tmp/glibc.apk "${GLIBC_PACKAGE}" \
     && curl --location --output /tmp/glibc-bin.apk "${GLIBC_BIN_PACKAGE}" \
