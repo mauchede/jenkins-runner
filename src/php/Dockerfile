@@ -5,7 +5,7 @@ FROM composer:latest as composer
 FROM openjdk:jre-alpine
 
 LABEL \
-    maintainer="Morgan Auchede <morgan.auchede@gmail.com>"
+    maintainer="Morgan AUCHEDE <morgan.auchede@gmail.com>"
 
 RUN set -e -u -x \
 \
